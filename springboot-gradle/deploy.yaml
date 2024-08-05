@@ -35,8 +35,8 @@ spec:
               containerPort: 8081
           resources:
             requests:
-              cpu: 500m
-              memory: 512Mi
+              cpu: 256m
+              memory: 256Mi
             limits:
               cpu: 500m
               memory: 1024Mi
