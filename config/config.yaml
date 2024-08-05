@@ -2,7 +2,7 @@ global:
   common-config:
     enabled: false
 name: config
-replicaCount: 2
+replicaCount: 3
 imagePullSecrets: dockerhub
 
 image:
@@ -40,7 +40,7 @@ service:
   targetPort: 18080
 
 ingress:
-  enabled: false
+  enabled: true
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
   className: nginx
