@@ -40,7 +40,7 @@ service:
   targetPort: 18080
 
 ingress:
-  enabled: true
+  enabled: false
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
   className: nginx
