@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-gradle
+  labels:
+    app: springboot-gradle
+spec:
+  selector:
+    matchLabels:
+      app: springboot-gradle
+  replicas: 1
+  template:
+    metadata:
+      name: springboot-gradle
+      labels:
+        app: springboot-gradle
+    spec:
+      imagePullSecrets:
+      - name: dockerhub      
+      containers:
+        - name: springboot-gradle
+          image: docker.io/hiondal/springboot-gradle:latest
+          imagePullPolicy: Always
+          env:
+            - name: PORT
+              value: "8080"
+          envFrom:
+          - configMapRef:
+              name: springboot-gradle
+          - secretRef:
+              name: springboot-gradle
+                            
+          ports:
+            - name: port1
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1024Mi
