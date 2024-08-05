@@ -3,7 +3,7 @@ global:
   common-config:
     enabled: false
 name: config
-replicaCount: 2
+replicaCount: 1
 imagePullSecrets: dockerhub
 
 image:
