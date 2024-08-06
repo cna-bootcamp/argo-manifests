@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: ServerSideApply=true,Prune=true,SelfHeal=true
     argocd.argoproj.io/refresh: hard
-    config-revision: 517dfd4ea6b0dc62104cd4091288e473f96fdc21
+    config-revision: 9422aa040621c97f5e6268043dd9f60f84ace9ab
 spec:
   project: subride
   source:
