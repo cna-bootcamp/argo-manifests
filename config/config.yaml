@@ -3,6 +3,7 @@ global:
   common-config:
     enabled: false
 name: config
+fullnameOverride: config
 replicaCount: 1
 imagePullSecrets: dockerhub
 

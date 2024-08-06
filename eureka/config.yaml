@@ -3,7 +3,6 @@ global:
   common-config:
     enabled: false
 name: eureka
-#nameOverride: eureka
 fullnameOverride: eureka
 replicaCount: 2
 imagePullSecrets: dockerhub
