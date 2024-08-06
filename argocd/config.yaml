@@ -10,12 +10,12 @@ metadata:
 spec:
   project: subride
   source:
-    repoURL: https://raw.githubusercontent.com/cna-bootcamp/helm-charts/main/stable
-    targetRevision: 1.0.4
-    chart: subride
+    repoURL: https://github.com/cna-bootcamp/argo-manifests.git
+    targetRevision: main
+    path: charts/stable/subride
     helm:
       valueFiles:
-      - https://raw.githubusercontent.com/cna-bootcamp/argo-manifests/main/config/config.yaml?ref=7a00e93e5756116983fb25466e371b23b2ca6633
+      - ["../../../config/config.yaml"]
   destination:
     server: https://kubernetes.default.svc
     namespace: gappa

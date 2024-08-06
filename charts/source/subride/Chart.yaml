@@ -1,0 +1,16 @@
+apiVersion: v2
+name: subride
+description: Subride
+version: 1.0.4
+kubeVersion: ">=1.23.0"
+keywords:
+  - subride
+maintainers: # (optional)
+  - name: HaeKyung Lee
+    email: hiondal@gmail.com
+  
+engine: gotpl
+icon: https://d36jcksde1wxzq.cloudfront.net/saas-mega/blueFingerprint.png
+appVersion: latest
+deprecated: false
+
