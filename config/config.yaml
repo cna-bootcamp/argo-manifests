@@ -3,11 +3,11 @@ global:
     enabled: false
 name: config
 fullnameOverride: config
-replicaCount: 2
+replicaCount: 1
 imagePullSecrets: dockerhub
 image:
   repository: docker.io/hiondal/config
-  tag: 2.0.0
+  tag: 2.0.1
   pullPolicy: Always
 containerPort: 18080
 configMap:
