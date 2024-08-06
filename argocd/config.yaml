@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: ServerSideApply=true,Prune=true,SelfHeal=true
     argocd.argoproj.io/refresh: hard
-    config-revision: d1009db759cf6d342638ca6dab077566aaf915eb
+    config-revision: 03531cdd2cbd75f9de563d21efe470b4b936368e
 spec:
   project: subride
   source:
@@ -14,8 +14,53 @@ spec:
     targetRevision: 1.0.4
     chart: subride
     helm:
-      valueFiles:
-      - https://raw.githubusercontent.com/cna-bootcamp/argo-manifests/main/config/config.yaml?ref=d1009db759cf6d342638ca6dab077566aaf915eb
+      values: |
+        global:
+          common-config:
+            enabled: false
+        name: config
+        fullnameOverride: config
+        replicaCount: 2
+        imagePullSecrets: dockerhub
+        image:
+          repository: docker.io/hiondal/config
+          tag: 2.0.1
+          pullPolicy: Always
+        containerPort: 18080
+        configMap:
+          enabled: true
+          data:
+            SERVER_PORT: '18080'
+            GIT_URL: https://github.com:443/cna-bootcamp/subride-config.git
+            GIT_USERNAME: hiondal
+            GIT_BRANCH: main
+        secret:
+          enabled: true
+          data:
+            GIT_TOKEN: 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
+            ENCRYPT_KEY: CL4cboqlIweOqt93wjzZi/qjCxcSOYAMgzdKiy6cG2Y=
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 1024Mi
+        service:
+          type: ClusterIP
+          port: 18080
+          targetPort: 18080
+        ingress:
+          enabled: true
+          annotations:
+            nginx.ingress.kubernetes.io/ssl-redirect: 'false'
+          className: nginx
+          rules:
+          - host: gappa.config.43.200.12.214.nip.io
+            http:
+              paths:
+              - path: /
+                pathType: Prefix
   destination:
     server: https://kubernetes.default.svc
     namespace: gappa
