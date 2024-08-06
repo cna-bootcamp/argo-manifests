@@ -3,7 +3,7 @@ global:
     enabled: false
 name: config
 fullnameOverride: config
-replicaCount: 3
+replicaCount: 1
 imagePullSecrets: dockerhub
 image:
   repository: docker.io/hiondal/config
