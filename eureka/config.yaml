@@ -1,0 +1,53 @@
+
+global:
+  common-config:
+    enabled: false
+name: eureka
+replicaCount: 2
+imagePullSecrets: dockerhub
+
+image:
+  repository: docker.io/hiondal/eureka
+  tag: latest
+  pullPolicy: Always
+
+containerPort: 18080
+
+configMap:
+  enabled: true
+  data:
+    SERVER_PORT: "18080"
+    EUREKA_HOST: eureka
+    EUREKA_PORT: "18080"
+    EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:18080/eureka/
+
+secret:
+  enabled: false
+  data:
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 1024Mi
+
+service:
+  type: ClusterIP
+  port: 18080
+  targetPort: 18080
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  className: nginx
+  rules:
+    - host: gappa.eureka.43.200.12.214.nip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+
+
