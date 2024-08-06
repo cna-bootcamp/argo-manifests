@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: config
+  namespace: argocd
+spec:
+  project: subride
+  source:
+    repoURL: https://raw.githubusercontent.com/cna-bootcamp/helm-charts/main/stable
+    targetRevision: 1.0.4
+    chart: subride
+    helm:
+      valueFiles:
+        - https://raw.githubusercontent.com/cna-bootcamp/argo-manifests/main/config/config.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gappa
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
