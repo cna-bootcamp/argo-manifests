@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: ServerSideApply=true,Prune=true,SelfHeal=true
     argocd.argoproj.io/refresh: hard
-    config-revision: 7a00e93e5756116983fb25466e371b23b2ca6633
+    config-revision: 1870c8aadb62e75b057058c78349d53634b3ad67
 spec:
   project: subride
   source:
@@ -15,7 +15,7 @@ spec:
     chart: subride
     helm:
       valueFiles:
-      - https://raw.githubusercontent.com/cna-bootcamp/argo-manifests/main/config/config.yaml?ref=7a00e93e5756116983fb25466e371b23b2ca6633
+      - https://raw.githubusercontent.com/cna-bootcamp/argo-manifests/main/config/config.yaml?ref=1870c8aadb62e75b057058c78349d53634b3ad67
   destination:
     server: https://kubernetes.default.svc
     namespace: gappa
