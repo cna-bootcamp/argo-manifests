@@ -4,7 +4,7 @@ global:
     enabled: false
 name: config
 fullnameOverride: config
-replicaCount: 1
+replicaCount: 3
 imagePullSecrets: dockerhub
 
 image:
