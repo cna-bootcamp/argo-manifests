@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: ServerSideApply=true,Prune=true,SelfHeal=true
     argocd.argoproj.io/refresh: hard
-    config-revision: 5df6d6e3d46d69a9d692f5e12f86f4a2f00a52c4
+    config-revision: c77be636b40a964552f8a61c6de8b3322604d407
 spec:
   project: subride
   source:
@@ -20,7 +20,7 @@ spec:
             enabled: false
         name: config
         fullnameOverride: config
-        replicaCount: 1
+        replicaCount: 3
         imagePullSecrets: dockerhub
         image:
           repository: docker.io/hiondal/config
@@ -65,8 +65,5 @@ spec:
     server: https://kubernetes.default.svc
     namespace: gappa
   syncPolicy:
-    #automated:
-    #  prune: true
-    #  selfHeal: true
     syncOptions:
     - CreateNamespace=true
