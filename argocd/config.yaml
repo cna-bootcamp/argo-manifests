@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: ServerSideApply=true,Prune=true,SelfHeal=true
     argocd.argoproj.io/refresh: hard
-    config-revision: c77be636b40a964552f8a61c6de8b3322604d407
+    config-revision: 60a8556485475cb222f28f672d63587b115c6094
 spec:
   project: subride
   source:
@@ -20,7 +20,7 @@ spec:
             enabled: false
         name: config
         fullnameOverride: config
-        replicaCount: 3
+        replicaCount: 2
         imagePullSecrets: dockerhub
         image:
           repository: docker.io/hiondal/config
